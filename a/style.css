@@ -1,0 +1,17 @@
+#container {
+    width: 500px;
+    margin: 0 auto;
+}
+
+header {
+    background-color: #ccc;
+    padding: 10px;
+}
+
+#todo-list {
+    list-style-type: none;
+}
+
+#todo-list li {
+    border-bottom: 1px solid #ccc;
+}
