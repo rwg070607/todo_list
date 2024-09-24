@@ -1,137 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <title>Todo List</title>
-    </head>
+<head>
+    <meta charset="UTF-8" />
+    <title>Todo List</title>
+    <link rel="stylesheet" href="style.css">
+</head>
 
-    <style>
-        #container {
-            width: 500px;
-            margin: 0 auto;
-        }
-
-        header {
-            background-color: #ccc;
-            padding: 10px;
-        }
-
-        #todo-list {
-            list-style-type: none;
-        }
-
-        #todo-list li {
-            border-bottom: 1px solid #ccc;
-        }
-    </style>
-    <body>
-        <div id="container">
-            <header>
-                <h1>Todo List</h1>
-            </header>
-            <section>
-                <ul id="todo-list"></ul>
-            </section>
-            <footer>
-                <input type="text" id="input-task" placeholder="할 일을 입력하세요." />
-                <button id="btn-add">추가</button>
-            </footer>
-        </div>
-        <script>
-            const todoList = [];
-
-            function 투두입력받아서추가하기(todoText) {
-                if (todoText !== "") {
-                    const todo = {
-                        text: todoText,
-                        done: false,
-                    };
-
-                    todoList.push(todo);
-                } else {
-                    alert("할일을 입력해주세요.");
-                }
-            }
-
-            function 투두토글하기(변수) {
-                if (todoList[변수].done === true) {
-                    todoList[변수].done = false;
-                } else {
-                    todoList[변수].done = true;
-                }
-            }
-
-            function 투두수정하기(인덱스, editText) {
-                if (editText !== "") {
-                    todoList[인덱스].text = editText;
-                } else {
-                    alert("수정할 내용을 입력하세요!");
-                }
-            }
-
-            function 투두삭제하기(인덱스) {
-                  todoList.splice(인덱스, 1)
-                  채
-            }
-
-            function 투두화면에그려주기(todoList) {
-                const todoListUl = document.querySelector("#todo-list");
-                todoListUl.innerHTML = "";
-
-                if (todoList.length < 1) {
-                    todoListUl.innerHTML = "할일이 없습니다.";
-                } else {
-                    for (let num = 0; num < todoList.length; num++) {
-                        const newLi = document.createElement("li");
-                        newLi.innerText = todoList[num].text;
-
-                        const toggleBtn = document.createElement("button");
-                        const delectBtn = document.createElement('button');
-                        const editBtn = document.createElement('button');
-
-                        if (todoList[num].done === true) {
-                            toggleBtn.innerText = "취소";
-                            newLi.style.textDecoration = "line-through";
-                            newLi.style.color = "red";
-                        } else {
-                            toggleBtn.innerText = "완료";
-                            newLi.style.textDecoration = "none";
-                            newLi.style.color = "black";
-                        }
-
-                        toggleBtn.addEventListener("click", function () {
-                            투두토글하기(num);
-                            투두화면에그려주기(todoList);
-                        });
-
-                        const btnDiv = document.createElement("div");
-                        btnDiv.appendChild(toggleBtn);
-                        newLi.appendChild(btnDiv);
-
-                        todoListUl.append(newLi);
-                    }
-                }
-            }
-
-            function 추가버튼클릭이벤트() {
-                const todoText = document.querySelector("#input-task").value;
-                투두입력받아서추가하기(todoText);
-                document.querySelector("#input-task").value = "";
-                투두화면에그려주기(todoList);
-            }
-
-            document.querySelector("#btn-add").addEventListener("click", 추가버튼클릭이벤트);
-
-            function init() {
-                const todoListUl = document.querySelector("#todo-list");
-                if (todoListUl.childElementCount < 1) {
-                    todoListUl.innerText = "할일이 없습니다.";
-                    console.log("조건문 안에 코드가 실행됨!");
-                }
-                console.log("함수가 실행됨!");
-            }
-
-            init();
-        </script>
-    </body>
+<body>
+    <div id="container">
+        <header>
+            <h1>Todo List</h1>
+        </header>
+        <section>
+            <ul id="todo-list"></ul>
+        </section>
+        <footer>
+            <input type="text" id="input-task" placeholder="할 일을 입력하세요." />
+            <button id="btn-add">추가</button>
+        </footer>
+    </div>
+</body>
+<script src="main.js"></script>
 </html>
